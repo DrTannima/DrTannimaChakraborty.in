@@ -202,12 +202,12 @@ function switchMap(index) {
             title: "COSMOS Clinic",
             directions: "https://maps.app.goo.gl/..."
         },
-        /*{
-            url: "https://www.google.com/maps/embed?...", // 3rd Map
-            address: "Your Third Clinic Address",
-            title: "Third Clinic Name",
+        {
+            url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.4057656735895!2d88.38912397526664!3d22.563922379497875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277812d74df4b%3A0xaf90ee9636d3fd01!2sM.%20M%20PUHAN%20HEALING%20HOME!5e0!3m2!1sen!2sin!", // 3rd Map
+            address: "H97R+HM8, Subhas Sarobar Park, Phoolbagan, Beleghata, Kolkata, West Bengal 700010",
+            title: "M M Puhan",
             directions: "https://maps.app.goo.gl/..."
-        }*/
+        }
     ];
 
     // 1. Update the Map Frame Source
