@@ -1,6 +1,50 @@
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+    // ==========================================
+    // 0. Theme Management (Light/Dark Mode)
+    // ==========================================
+    const getPreferredTheme = () => {
+        const stored = localStorage.getItem('theme');
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+
+    const setTheme = (theme) => {
+        const html = document.documentElement;
+        html.classList.add('theme-switching');
+        
+        if (theme === 'dark') {
+            html.classList.add('dark-mode');
+        } else {
+            html.classList.remove('dark-mode');
+        }
+        
+        localStorage.setItem('theme', theme);
+        
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                html.classList.remove('theme-switching');
+            });
+        });
+    };
+
+    setTheme(getPreferredTheme());
+
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
     // ==========================================
     // 1. Sticky Header & Active Nav Links
     // ==========================================
@@ -234,7 +278,3 @@ function switchMap(index) {
         }
     });
 }
-
-
-
-
